@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 246 100% 69%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 100% 86%;
+    --secondary-foreground: 0 0% 7%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 250 100% 86%;
+    --accent-foreground: 0 0% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 246 100% 69%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-portfolio-black text-portfolio-gray font-poppins;
+  }
+
+  ::-webkit-scrollbar {
+  width: 12px; /* Width for vertical scrollbar */
+  height: 12px; /* Height for horizontal scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: white; 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(108, 99, 255);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 0.9;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold;
+  }
+
+  section {
+    @apply py-16 px-6 md:px-12 lg:px-24 scroll-mt-20;
+  }
+
+  .project-card {
+    @apply bg-zinc-900 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-portfolio-purple/20 hover:-translate-y-2;
+  }
+
+  .nav-link {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-portfolio-purple after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left;
+  }
+
+  .button-primary {
+    @apply bg-portfolio-purple text-white font-medium py-2 px-6 rounded-lg hover:opacity-90 transition-all shadow-lg shadow-portfolio-purple/20;
+  }
+
+  .button-outline {
+    @apply border-2 border-portfolio-purple text-portfolio-purple font-medium py-2 px-6 rounded-lg hover:bg-portfolio-purple hover:text-white transition-all;
+  }
+}
