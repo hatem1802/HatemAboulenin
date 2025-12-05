@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Plus,
-  Briefcase,
-  Trash,
-  Edit,
-  ArrowUp,
-  ArrowDown,
-} from "lucide-react";
+import { Plus, Briefcase, Trash, Edit, ArrowUp, ArrowDown } from "lucide-react";
 import { supabaseApi, Project, Category } from "@/utils/supabaseApi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -292,10 +285,14 @@ export const DashboardProjects = () => {
   // Load projects and categories
   const fetchProjects = async () => {
     try {
-      fetch("https://portfolio-backend-production-6392.up.railway.app/api/projects")
+      fetch(
+        "https://portfolio-backend-production-6392.up.railway.app/api/projects"
+      )
         .then((res) => res.json())
         .then((data) => setProjects(data));
-      fetch("https://portfolio-backend-production-6392.up.railway.app/api/categs")
+      fetch(
+        "https://portfolio-backend-production-6392.up.railway.app/api/categs"
+      )
         .then((res) => res.json())
         .then((data) => setCategories(data));
     } catch (error) {
@@ -364,6 +361,9 @@ export const DashboardProjects = () => {
         "https://portfolio-backend-production-6392.up.railway.app/api/projects/image",
         formdata
       );
+      if (projectTextData) {
+        fetchProjects();
+      }
     } catch (error) {
       console.error("Error adding project:", error);
     }

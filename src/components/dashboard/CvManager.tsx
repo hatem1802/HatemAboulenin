@@ -56,7 +56,7 @@ export const CvManager = () => {
     try {
       console.log(formData)
       const newFile = await axios.post(
-        "http://portfolio-backend-production-6392.up.railway.app/api/cv",
+        "https://portfolio-backend-production-6392.up.railway.app/api/cv",
         formData
       );
 
