@@ -14,10 +14,10 @@ const Projects = () => {
     const fetchProjects = async () => {
       setIsLoading(true);
       try {
-        fetch("https://portfolio-backend-production-6392.up.railway.app/api/projects")
+        fetch("https://portfolio-backend-m5ro.onrender.com/api/projects")
           .then((res) => res.json())
           .then((data) => setProjects(data));
-        fetch("https://portfolio-backend-production-6392.up.railway.app/api/categs")
+        fetch("https://portfolio-backend-m5ro.onrender.com/api/categs")
           .then((res) => res.json())
           .then((data) => setCategories(data));
       } catch (error) {

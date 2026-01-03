@@ -16,7 +16,7 @@ const Contact = () => {
     const fetchContacts = () => {
       setIsLoading(true);
       try {
-        fetch("https://portfolio-backend-production-6392.up.railway.app/api/contacts")
+        fetch("https://portfolio-backend-m5ro.onrender.com/api/contacts")
           .then((res) => res.json())
           .then((data) => setContacts(data));
       } catch (err) {

@@ -18,7 +18,7 @@ export const ContactManager = () => {
   const { toast } = useToast();
 
   const fetchContact = async () => {
-    fetch("https://portfolio-backend-production-6392.up.railway.app/api/contacts")
+    fetch("https://portfolio-backend-m5ro.onrender.com/api/contacts")
       .then((res) => res.json())
       .then(data => setContact(data))
   };
@@ -33,7 +33,7 @@ export const ContactManager = () => {
   ) => {
     try {
       const editContact = await axios.put(
-        `https://portfolio-backend-production-6392.up.railway.app/api/contacts/${id}`,
+        `https://portfolio-backend-m5ro.onrender.com/api/contacts/${id}`,
         updatedContact
       );
 

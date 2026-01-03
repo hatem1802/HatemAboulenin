@@ -11,13 +11,13 @@ const Hero = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        fetch('https://portfolio-backend-production-6392.up.railway.app/api/cv/home')
+        fetch('https://portfolio-backend-m5ro.onrender.com/api/cv/home')
           .then(res => res.json())
           .then(data => setActiveCv(data));
-        fetch('https://portfolio-backend-production-6392.up.railway.app/images/profile')
+        fetch('https://portfolio-backend-m5ro.onrender.com/images/profile')
           .then(res => res.json())
           .then(data => setActiveProfile(data));
-        fetch('https://portfolio-backend-production-6392.up.railway.app/api/contacts')
+        fetch('https://portfolio-backend-m5ro.onrender.com/api/contacts')
           .then(res => res.json())
           .then(data => setLinkedIn(data.linkedin));
       } catch (error) {

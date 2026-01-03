@@ -286,12 +286,12 @@ export const DashboardProjects = () => {
   const fetchProjects = async () => {
     try {
       fetch(
-        "https://portfolio-backend-production-6392.up.railway.app/api/projects"
+        "https://portfolio-backend-m5ro.onrender.com/api/projects"
       )
         .then((res) => res.json())
         .then((data) => setProjects(data));
       fetch(
-        "https://portfolio-backend-production-6392.up.railway.app/api/categs"
+        "https://portfolio-backend-m5ro.onrender.com/api/categs"
       )
         .then((res) => res.json())
         .then((data) => setCategories(data));
@@ -327,7 +327,7 @@ export const DashboardProjects = () => {
     try {
       // Update the project's sort order
       const updatedProject = await axios.put(
-        `https://portfolio-backend-production-6392.up.railway.app/api/projects/${project._id}`,
+        `https://portfolio-backend-m5ro.onrender.com/api/projects/${project._id}`,
         newSorting
       );
 
@@ -354,11 +354,11 @@ export const DashboardProjects = () => {
   const handleAddProject = async (projectData, formdata) => {
     try {
       const projectTextData = await axios.post(
-        "https://portfolio-backend-production-6392.up.railway.app/api/projects",
+        "https://portfolio-backend-m5ro.onrender.com/api/projects",
         projectData
       );
       const projectImage = await axios.post(
-        "https://portfolio-backend-production-6392.up.railway.app/api/projects/image",
+        "https://portfolio-backend-m5ro.onrender.com/api/projects/image",
         formdata
       );
       if (projectTextData) {
@@ -381,7 +381,7 @@ export const DashboardProjects = () => {
   ) => {
     try {
       const updated = await axios.put(
-        `https://portfolio-backend-production-6392.up.railway.app/api/projects/${id}`,
+        `https://portfolio-backend-m5ro.onrender.com/api/projects/${id}`,
         updatedProject
       );
       // update displaying projects
@@ -396,7 +396,7 @@ export const DashboardProjects = () => {
   const handleDeleteProject = async (id: string) => {
     try {
       const deleteProject = await axios.delete(
-        `https://portfolio-backend-production-6392.up.railway.app/api/projects/${id}`
+        `https://portfolio-backend-m5ro.onrender.com/api/projects/${id}`
       );
       setProjects((prev) => prev.filter((project) => project._id !== id));
     } catch (error) {
