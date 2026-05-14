@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Code, Server, Palette, Database, Layout } from "lucide-react";
 import { API_URL } from "@/lib/api";
 const About = () => {
-  const [skills, setSkills] = useState<[]>([]);
+  const [skills, setSkills] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
