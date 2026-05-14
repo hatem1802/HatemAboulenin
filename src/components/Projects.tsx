@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { API_URL } from "@/lib/api";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [projects, setProjects] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Fetch projects and categories from API when component mounts
