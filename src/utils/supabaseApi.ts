@@ -2,34 +2,51 @@
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/use-toast";
 
-// Types
+// Types (kept permissive to bridge external REST API shape and Supabase tables)
 export type Project = {
+  _id?: string;
+  id?: string;
   title: string;
   description: string;
-  imageFile: File;
-  skills: Array;
-  githubURL: string | null;
-  liveURL: string | null;
-  category: string | null;
-  sorting?: string; // Add the sort_order field
+  imageFile?: File;
+  imageURL?: string;
+  image?: string;
+  skills?: string[];
+  tags?: string[];
+  githubURL?: string | null;
+  github?: string | null;
+  liveURL?: string | null;
+  demo?: string | null;
+  category?: string | null;
+  sorting?: string | number;
+  sort_order?: number;
+  long_description?: string;
+  detail_images?: string[];
 };
 
 export type Category = {
-  _id: string;
-  category: string;
-  sorting: number
-};
-
-export type Skill = {
-  _id: string;
-  category: string;
-  skills: string[];
-  icon: string;
+  _id?: string;
+  id?: string;
+  category?: string;
+  name?: string;
   sorting?: number;
 };
 
+export type Skill = {
+  _id?: string;
+  id?: string;
+  category: string;
+  skills?: string[];
+  items?: string[];
+  icon: string;
+  sorting?: number;
+  sort_order?: number;
+  created_at?: string;
+};
+
 export type ContactInfo = {
-  _id: string;
+  _id?: string;
+  id?: string;
   email: string | null;
   phone: string | null;
   location: string | null;
