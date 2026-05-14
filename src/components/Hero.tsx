@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { API_URL } from "@/lib/api";
 
 const Hero = () => {
   const [activeProfile, setActiveProfile] = useState(null);
@@ -11,13 +12,13 @@ const Hero = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        fetch('https://portfolio-backend-m5ro.onrender.com/api/cv/home')
+        fetch(`${API_URL}/api/cv/home`)
           .then(res => res.json())
           .then(data => setActiveCv(data));
-        fetch('https://portfolio-backend-m5ro.onrender.com/images/profile')
+        fetch(`${API_URL}/images/profile`)
           .then(res => res.json())
           .then(data => setActiveProfile(data));
-        fetch('https://portfolio-backend-m5ro.onrender.com/api/contacts')
+        fetch(`${API_URL}/api/contacts`)
           .then(res => res.json())
           .then(data => setLinkedIn(data.linkedin));
       } catch (error) {

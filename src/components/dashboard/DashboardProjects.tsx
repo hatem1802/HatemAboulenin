@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { EditProjectForm } from "@/components/dashboard/EditProjectForm";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 // Extended project type with created_at
 type ProjectWithDates = Project & {
@@ -286,12 +287,12 @@ export const DashboardProjects = () => {
   const fetchProjects = async () => {
     try {
       fetch(
-        "https://portfolio-backend-m5ro.onrender.com/api/projects"
+        `${API_URL}/api/projects`
       )
         .then((res) => res.json())
         .then((data) => setProjects(data));
       fetch(
-        "https://portfolio-backend-m5ro.onrender.com/api/categs"
+        `${API_URL}/api/categs`
       )
         .then((res) => res.json())
         .then((data) => setCategories(data));
@@ -327,7 +328,7 @@ export const DashboardProjects = () => {
     try {
       // Update the project's sort order
       const updatedProject = await axios.put(
-        `https://portfolio-backend-m5ro.onrender.com/api/projects/${project._id}`,
+        `${API_URL}/api/projects/${project._id}`,
         newSorting
       );
 
@@ -354,11 +355,11 @@ export const DashboardProjects = () => {
   const handleAddProject = async (projectData, formdata) => {
     try {
       const projectTextData = await axios.post(
-        "https://portfolio-backend-m5ro.onrender.com/api/projects",
+        `${API_URL}/api/projects`,
         projectData
       );
       const projectImage = await axios.post(
-        "https://portfolio-backend-m5ro.onrender.com/api/projects/image",
+        `${API_URL}/api/projects/image`,
         formdata
       );
       if (projectTextData) {
@@ -381,7 +382,7 @@ export const DashboardProjects = () => {
   ) => {
     try {
       const updated = await axios.put(
-        `https://portfolio-backend-m5ro.onrender.com/api/projects/${id}`,
+        `${API_URL}/api/projects/${id}`,
         updatedProject
       );
       // update displaying projects
@@ -396,7 +397,7 @@ export const DashboardProjects = () => {
   const handleDeleteProject = async (id: string) => {
     try {
       const deleteProject = await axios.delete(
-        `https://portfolio-backend-m5ro.onrender.com/api/projects/${id}`
+        `${API_URL}/api/projects/${id}`
       );
       setProjects((prev) => prev.filter((project) => project._id !== id));
     } catch (error) {

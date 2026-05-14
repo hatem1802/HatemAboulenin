@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 export const DashboardSkills = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -49,7 +50,7 @@ export const DashboardSkills = () => {
   const fetchSkills = async () => {
     try {
       setLoading(true);
-      fetch("https://portfolio-backend-m5ro.onrender.com/api/skills")
+      fetch(`${API_URL}/api/skills`)
         .then((res) => res.json())
         .then((data) => setSkills(data));
       // setSkills(fetchedSkills);
@@ -107,7 +108,7 @@ export const DashboardSkills = () => {
         sorting: skills.length + 1,
       };
       const addSkills = await axios.post(
-        "https://portfolio-backend-m5ro.onrender.com/api/skills",
+        `${API_URL}/api/skills`,
         obj
       );
       // Reset form
@@ -129,7 +130,7 @@ export const DashboardSkills = () => {
   const handleSaveSkill = async (id: string, updatedSkill: Skill) => {
     try {
       const editingSkill = await axios.put(
-        `https://portfolio-backend-m5ro.onrender.com/api/skills/${id}`,
+        `${API_URL}/api/skills/${id}`,
         updatedSkill
       );
       setEditingSkill(undefined);
@@ -148,7 +149,7 @@ export const DashboardSkills = () => {
     const id = skill._id;
     try {
       const deletedSkills = await axios.delete(
-        `https://portfolio-backend-m5ro.onrender.com/api/skills/${id}`
+        `${API_URL}/api/skills/${id}`
       );
 
       setSkills(skills.filter((s) => s._id !== id));
@@ -176,7 +177,7 @@ export const DashboardSkills = () => {
 
     try {
       const savedSkill = await axios.put(
-        `https://portfolio-backend-m5ro.onrender.com/api/skills/${skill._id}`,
+        `${API_URL}/api/skills/${skill._id}`,
         newSorting
       );
       fetchSkills();

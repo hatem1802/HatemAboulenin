@@ -5,6 +5,7 @@ import { EditContactForm } from "./EditContactForm";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 export const ContactManager = () => {
   const [contact, setContact] = useState({
@@ -18,7 +19,7 @@ export const ContactManager = () => {
   const { toast } = useToast();
 
   const fetchContact = async () => {
-    fetch("https://portfolio-backend-m5ro.onrender.com/api/contacts")
+    fetch(`${API_URL}/api/contacts`)
       .then((res) => res.json())
       .then(data => setContact(data))
   };
@@ -33,7 +34,7 @@ export const ContactManager = () => {
   ) => {
     try {
       const editContact = await axios.put(
-        `https://portfolio-backend-m5ro.onrender.com/api/contacts/${id}`,
+        `${API_URL}/api/contacts`,
         updatedContact
       );
 

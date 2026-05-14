@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Code, Server, Palette, Database, Layout } from "lucide-react";
+import { API_URL } from "@/lib/api";
 const About = () => {
   const [skills, setSkills] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -7,7 +8,7 @@ const About = () => {
   useEffect(() => {
     try {
       setIsLoading(true);
-      fetch("https://portfolio-backend-m5ro.onrender.com/api/skills")
+      fetch(`${API_URL}/api/skills`)
         .then((res) => res.json())
         .then((data) => setSkills(data));
     } catch (err) {

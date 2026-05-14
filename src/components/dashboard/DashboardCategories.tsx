@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { EditCategoryForm } from "@/components/dashboard/EditCategoryForm";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 
 // Add Category Form Component
@@ -98,7 +99,7 @@ export const DashboardCategories = () => {
   // Load categories
   const fetchCategories = async () => {
     try {
-      fetch("https://portfolio-backend-m5ro.onrender.com/api/categs")
+      fetch(`${API_URL}/api/categs`)
         .then((res) => res.json())
         .then((data) => setCategories(data));
     } catch (error) {
@@ -122,7 +123,7 @@ export const DashboardCategories = () => {
         sorting: categories.length + 1,
       };
       const newCategory = await axios.post(
-        "https://portfolio-backend-m5ro.onrender.com/api/categs",
+        `${API_URL}/api/categs`,
         obj
       );
       if (newCategory) {
@@ -139,7 +140,7 @@ export const DashboardCategories = () => {
       const obj = {
         category: name
       }
-      const updated = await axios.put(`https://portfolio-backend-m5ro.onrender.com/api/categs/${id}`,obj)
+      const updated = await axios.put(`${API_URL}/api/categs/${id}`,obj)
       if (updated) {
         fetchCategories();
       }
@@ -152,7 +153,7 @@ export const DashboardCategories = () => {
   // Handle deleting a category
   const handleDeleteCategory = async (id: string) => {
     try {
-      const deleteCategory = axios.delete(`https://portfolio-backend-m5ro.onrender.com/api/categs/${id}`);
+      const deleteCategory = axios.delete(`${API_URL}/api/categs/${id}`);
       fetchCategories();
     } catch (error) {
       console.error("Error deleting category:", error);

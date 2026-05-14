@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 const Contact = () => {
   const [isloading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ const Contact = () => {
     const fetchContacts = () => {
       setIsLoading(true);
       try {
-        fetch("https://portfolio-backend-m5ro.onrender.com/api/contacts")
+        fetch(`${API_URL}/api/contacts`)
           .then((res) => res.json())
           .then((data) => setContacts(data));
       } catch (err) {

@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 interface DashboardLoginProps {
   onLoginSuccess: () => void;
@@ -19,7 +20,7 @@ export const DashboardLogin = ({ onLoginSuccess }: DashboardLoginProps) => {
     setIsLoading(true);
 
     try {
-      const fetchResult = await axios.post("https://portfolio-backend-m5ro.onrender.com/api/login", {
+      const fetchResult = await axios.post(`${API_URL}/api/login`, {
         password: password,
       });
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Github, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { API_URL } from "@/lib/api";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -14,10 +15,10 @@ const Projects = () => {
     const fetchProjects = async () => {
       setIsLoading(true);
       try {
-        fetch("https://portfolio-backend-m5ro.onrender.com/api/projects")
+        fetch(`${API_URL}/api/projects`)
           .then((res) => res.json())
           .then((data) => setProjects(data));
-        fetch("https://portfolio-backend-m5ro.onrender.com/api/categs")
+        fetch(`${API_URL}/api/categs`)
           .then((res) => res.json())
           .then((data) => setCategories(data));
       } catch (error) {

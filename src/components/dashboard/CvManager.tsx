@@ -4,6 +4,7 @@ import { CvFile, supabaseApi } from "@/utils/supabaseApi";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 export const CvManager = () => {
   const [cvFiles, setCvFiles] = useState([]);
@@ -18,7 +19,7 @@ export const CvManager = () => {
   const fetchCvFiles = async () => {
     setLoading(true);
     try {
-      fetch("https://portfolio-backend-m5ro.onrender.com/api/cv/dashboard")
+      fetch(`${API_URL}/api/cv/dashboard`)
         .then((res) => res.json())
         .then((data) => setCvFiles(data));
     } catch (error) {
@@ -56,9 +57,10 @@ export const CvManager = () => {
     try {
       console.log(formData)
       const newFile = await axios.post(
-        "https://portfolio-backend-production-6392.up.railway.app/api/cv",
+        `${API_URL}/api/cv`,
         formData
       );
+
 
       if (newFile) {
         toast({
@@ -83,7 +85,7 @@ export const CvManager = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      const deletingFile = axios.delete(`https://portfolio-backend-m5ro.onrender.com/api/cv/${id}`);
+      const deletingFile = axios.delete(`${API_URL}/api/cv/${id}`);
       setCvFiles((prev) => prev.filter((file) => file._id !== id));
       toast({
         title: "Success",
@@ -101,9 +103,10 @@ export const CvManager = () => {
 
   const handleSetActive = async (id: string) => {
     try {
-      const editedFile = await axios.put(`https://portfolio-backend-m5ro.onrender.com/api/cv/${id}`, {
+      const editedFile = await axios.put(`${API_URL}/api/cv/${id}`, {
         isActive: true,
       });
+
       // Refresh the list to show updated display status
       fetchCvFiles();
       toast({
