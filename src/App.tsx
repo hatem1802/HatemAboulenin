@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
-import ProjectDetail from "./pages/ProjectDetail";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +20,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* Dashboard route is still accessible by direct URL, but no UI elements link to it */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
