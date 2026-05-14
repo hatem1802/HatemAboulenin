@@ -106,7 +106,7 @@ export const supabaseApi = {
     try {
       const { data, error } = await supabase
         .from("projects")
-        .insert([project])
+        .insert([project as any])
         .select()
         .single();
 
@@ -141,7 +141,7 @@ export const supabaseApi = {
     try {
       const { data, error } = await supabase
         .from("projects")
-        .update(project)
+        .update(project as any)
         .eq("id", id)
         .select()
         .single();
@@ -370,7 +370,7 @@ export const supabaseApi = {
     try {
       const { data, error } = await supabase
         .from("skills")
-        .insert([skill])
+        .insert([skill as any])
         .select()
         .single();
 
@@ -405,7 +405,7 @@ export const supabaseApi = {
     try {
       const { data, error } = await supabase
         .from("skills")
-        .update(skill)
+        .update(skill as any)
         .eq("id", id)
         .select()
         .single();
@@ -473,7 +473,7 @@ export const supabaseApi = {
       for (const skill of skillsWithOrder) {
         const { error } = await supabase
           .from("skills")
-          .update({ sort_order: skill.sort_order })
+          .update({ sort_order: skill.sort_order } as any)
           .eq("id", skill.id);
 
         if (error) {
@@ -528,7 +528,7 @@ export const supabaseApi = {
     try {
       const { data, error } = await supabase
         .from("contact_info")
-        .insert([contactInfo])
+        .insert([contactInfo as any])
         .select()
         .single();
 
@@ -565,7 +565,7 @@ export const supabaseApi = {
       
       const { data, error } = await supabase
         .from("contact_info")
-        .update(contactInfo)
+        .update(contactInfo as any)
         .eq("id", id)
         .select()
         .single();
